@@ -57,7 +57,7 @@ public class MyNotificationService extends IntentService {
         Notification notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.icon_circle)
                 .setContentTitle("Catch Em All")
-                .setContentText("You Caught a Pokemon!")
+                .setContentText("A wild Pokemon appears!")
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true) // Hides the notification after its been selected
                 .build();

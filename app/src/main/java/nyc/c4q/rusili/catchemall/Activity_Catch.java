@@ -92,7 +92,7 @@ public class Activity_Catch extends AppCompatActivity {
 
     public static void displayInfo(String givenName, String image_URL1) {
         tv_pokemon_name.setText("You caught a: " + givenName);
-        Picasso.with(ctx).load(image_URL1).resize(400, 400).centerCrop().into(iv_pokemon_front);
+        Picasso.with(ctx).load(image_URL1).resize(500, 500).centerCrop().into(iv_pokemon_front);
     }
 
     public void Exit(View view) {
