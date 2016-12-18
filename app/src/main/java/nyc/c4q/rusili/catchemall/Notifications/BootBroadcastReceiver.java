@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.WakefulBroadcastReceiver;
 
-public class BroadcastReceiver extends WakefulBroadcastReceiver {
+public class BootBroadcastReceiver extends WakefulBroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent i = new Intent(context, NotificationService.class);
-        startWakefulService(context, i);
+        Intent startServiceIntent = new Intent(context, MyNotificationService.class);
+        startWakefulService(context, startServiceIntent);
     }
 }

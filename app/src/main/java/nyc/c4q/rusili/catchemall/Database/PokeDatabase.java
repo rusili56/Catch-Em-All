@@ -5,38 +5,33 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import nyc.c4q.rusili.catchemall.Network.Pokemon;
-
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
-public class AnimalDatabaseHelper extends SQLiteOpenHelper {
+public class PokeDatabase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "pokemon.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
 
     // make your database instance a singleton instance across the entire application's lifecycle.
-    private static AnimalDatabaseHelper instance;
+    private static PokeDatabase instance;
 
     // the static getInstance() method ensures that only one PostsDatabaseHelper will ever exist at any given time.
     // if the instance object has not been initialized, one will be created. If one has already been created then it
     // will simply be returned.
 
-    public static synchronized AnimalDatabaseHelper getInstance(Context context) {
+    public static synchronized PokeDatabase getInstance(Context context) {
 
         // Use the application context, which will ensure that you
         // don't accidentally leak an Activity's context.
-        if (instance == null) {
-            instance = new AnimalDatabaseHelper(context.getApplicationContext());
-        }
+        if (instance == null) instance = new PokeDatabase(context.getApplicationContext());
         return instance;
     }
 
-    private AnimalDatabaseHelper(Context context) {
+    private PokeDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     static {
-        // register our models
-        cupboard().register(Pokemon.class);
+        cupboard().register(PokeModel.class);
     }
 
     @Override
@@ -56,7 +51,9 @@ public class AnimalDatabaseHelper extends SQLiteOpenHelper {
         if (newVersion == 2) {
             ContentValues cv = new ContentValues();
             cv.put("image_url", "");
-            cupboard().withDatabase(db).update(Pokemon.class, cv);
+
+
+            cupboard().withDatabase(db).update(PokeModel.class, cv);
         }
     }
 }
