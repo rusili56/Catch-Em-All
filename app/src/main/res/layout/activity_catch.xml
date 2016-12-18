@@ -53,13 +53,14 @@
             <ImageView
                 android:id="@+id/catch_iv_image_front"
                 android:layout_width="0dp"
-                android:layout_weight="50"
+                android:layout_weight="100"
                 android:layout_height="match_parent"
                 />
             <ImageView
                 android:layout_width="0dp"
-                android:layout_weight="50"
+                android:layout_weight="0"
                 android:layout_height="match_parent"
+                android:padding="25dp"
                 />
         </LinearLayout>
 

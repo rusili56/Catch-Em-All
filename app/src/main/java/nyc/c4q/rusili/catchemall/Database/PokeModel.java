@@ -10,6 +10,21 @@ public class PokeModel {
     private String image_url2;
     private long timeCaught;
 
+    public Long get_id() {
+        return _id;
+    }
+
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public String getImage_url1() {
+        return image_url1;
+    }
+
+    public PokeModel() {
+    }
+
     public PokeModel(Long id, String givenName, String nickName, String type, String image_url1, String image_url2, long timeCaught) {
         this._id = id;
         this.givenName = givenName;

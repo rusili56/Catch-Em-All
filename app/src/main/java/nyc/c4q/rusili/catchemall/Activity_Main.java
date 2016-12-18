@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class Activity_Main extends AppCompatActivity {
 
+    private TextView tv_numCaught;
     private RecyclerView rv;
     private PokeAdapter pokeAdapter;
     private PokeFragment pF = new PokeFragment();
@@ -39,6 +41,7 @@ public class Activity_Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tv_numCaught = (TextView) findViewById(R.id.main_numCaught);
 
         PokeDatabase dbHelper = PokeDatabase.getInstance(this);
         db = dbHelper.getWritableDatabase();
@@ -47,12 +50,9 @@ public class Activity_Main extends AppCompatActivity {
         rv = (RecyclerView) findViewById(R.id.id_recyclerview);
         rv.setLayoutManager(new GridLayoutManager(this, 2));
         rv.setAdapter(pokeAdapter);
+        tv_numCaught.setText("" + selectAllPokemon().size());
 
         BasicNotificationIntent();
-
-        //getFragmentManager().beginTransaction().add(R.id.id_fraglayout, pF).commit();
-
-        //TestService();
     }
 
     public void ScheduleAlarm(){
